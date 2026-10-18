@@ -83,18 +83,30 @@ visible and must never be replaced by a portal-generated credential.
 ## Network profiles and acceptance
 
 - Component and application tests may use immediate in-memory adapters.
-- An explicitly enabled staging demo uses the normal portal, backend,
-  high-level SDK and gateway routes with an in-memory Fabric adapter that waits
-  six seconds for each simulated ledger operation.
-- An interactively run local portal uses real `local-network` Fabric and must
-  prove a real transaction identifier plus authoritative readback after
-  gateway, peer and chaincode restart.
-- Test Network and production use their real Fabric adapters and reject demo
-  mode.
+- Demo is the only executable MVP profile. It uses the normal portal, BFF,
+  high-level SDK and gateway routes with the in-memory Fabric adapter and its
+  six-second simulated confirmation.
+- Test Network is visible but disabled until the project owner supplies
+  Kubernetes, endpoints, credentials and configuration.
+- Production is visible and disabled.
 
 The browser never selects an adapter, network, tenant, zone, Fabric channel,
-chaincode or authority tuple. Staging must visibly identify simulated
-operations; they never count as Test Network or production evidence.
+chaincode, collection prefix or authority tuple. Demo retains the same UI,
+options, controlled components, validation and business flows intended for
+Test Network while visibly identifying simulated operations. The trusted BFF
+and gateway resolve their existing environment collection prefixes; Demo
+cannot access Test Network or Production namespaces.
+
+For Firebase App Hosting, the project owner—not Bolt—authorizes the official
+Firebase GitHub application and chooses the Firebase project, region, backend
+and live branch. Never paste or commit a service-account key. Runtime Firebase
+Admin/Firestore uses Application Default Credentials, and Secret Manager names
+may be referenced from `apphosting.yaml`. Prefer Firestore for the hosted Demo;
+PostgreSQL plus local IPFS is the verified self-hosted profile. Supabase is
+currently a blob adapter and MongoDB is not wired as the current vault
+repository, so neither is claimed as a complete database profile.
+
+Implementation is tracked in [Demo environment issue #2](https://github.com/antifraudservices/antifraud-personal-next/issues/2).
 
 ## Status
 
