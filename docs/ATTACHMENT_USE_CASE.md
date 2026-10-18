@@ -1,5 +1,10 @@
 # Personal attachment use case
 
+The authenticated-person prerequisite is defined in
+[`BETA_FIREBASE_AUTH.md`](BETA_FIREBASE_AUTH.md). Google login authenticates the
+person but grants no contact, attachment, disclosure, wallet or signing
+authority.
+
 The personal inbox presents Schema.org `DigitalDocument` and `MediaObject`
 records. It never presents or serializes FHIR `DocumentReference`.
 
