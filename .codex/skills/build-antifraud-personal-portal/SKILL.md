@@ -62,9 +62,11 @@ Environment acceptance for the focused MVP is fixed: Demo is the only
 executable profile and uses the normal portal → BFF → high-level SDK → gateway
 contract with the six-second in-memory Fabric simulation. It preserves the
 same UI, options, controlled components, validation and business flows intended
-for future Test Network use. Test Network is visible but disabled until the
-project owner supplies Kubernetes and configuration; Production is visible and
-disabled. Reuse the existing trusted BFF/gateway collection-prefix resolver;
+for future Test Network use. Test Network is visible but disabled during Demo
+and is enabled only after the affected real local-network gate, cumulative
+package release, endpoints, credentials and server configuration are complete.
+Its initial single-orderer profile is non-HA and non-production. Production is
+visible and disabled. Reuse the existing trusted BFF/gateway collection-prefix resolver;
 React never supplies a prefix, and tests prove Demo cannot access either
 disabled environment. Simulated operations are labelled and never count as
 deployed-network evidence.
