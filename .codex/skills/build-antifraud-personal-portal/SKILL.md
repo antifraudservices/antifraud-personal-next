@@ -22,6 +22,31 @@ governed protocol and preserve issuer trust, holder binding, audience, nonce,
 state, status and revocation checks. If those boundaries are deferred, show
 them as unavailable rather than simulating a successful credential.
 
+Reuse the governed encrypted Communication collection or batch. A message may
+reference a protected JSON:API primary document containing one or more
+Schema.org documents; do not substitute a clinical Bundle or expose raw
+attachments. Professional-to-personal, personal-to-professional and
+professional-to-professional exchanges reuse this transport and document
+manifest contract.
+
+The wallet registers distinct public device keys through Dynamic Client
+Registration: ML-KEM-768 for communication encryption and policy-required
+ML-DSA-65 for document-manifest signing. Reuse the wallet, secure-message and
+managed-profile security already implemented by the shared core and Node.js
+SDKs; do not reproduce cryptography, canonicalization, private-key custody or
+unlock behavior in React. Never export private keys. For a cloud
+wallet, require biometric unlock when available and a governed PIN or password
+fallback otherwise. The ceremony authorizes a short-lived, user-bound,
+device-bound and operation-bound backend-for-frontend wallet session; the
+backend uses the high-level SDK to sign and returns only the proof and receipt.
+Lock, expiry, cancellation or binding failure destroys the unlocked session.
+Delivery, read state and a UI action are never signatures.
+
+The relying-party example is a separate application. It may use Google OpenID
+Connect for a synthetic login and request only an audience-bound,
+purpose-bound, expiring age predicate. Login grants no public personal-record
+search or data access.
+
 Use synthetic identities and documents. Never commit internal prompts, tenant
 hosts, secrets or real personal data. Use red-green-refactor TDD.
 
