@@ -58,8 +58,19 @@ second predicate in the personal or relying-party flow.
 Use synthetic identities and documents. Never commit internal prompts, tenant
 hosts, secrets or real personal data. Use red-green-refactor TDD.
 
-Environment acceptance is fixed: immediate memory for automated tests; the
-same gateway contract with a six-second memory delay for an explicit staging
-demo; real `local-network` Fabric for interactive local acceptance; and real
-Fabric for Test Network and production. Simulated operations are labelled and
-never count as deployed-network evidence.
+Environment acceptance for the focused MVP is fixed: Demo is the only
+executable profile and uses the normal portal → BFF → high-level SDK → gateway
+contract with the six-second in-memory Fabric simulation. It preserves the
+same UI, options, controlled components, validation and business flows intended
+for future Test Network use. Test Network is visible but disabled until the
+project owner supplies Kubernetes and configuration; Production is visible and
+disabled. Reuse the existing trusted BFF/gateway collection-prefix resolver;
+React never supplies a prefix, and tests prove Demo cannot access either
+disabled environment. Simulated operations are labelled and never count as
+deployed-network evidence.
+
+When preparing Firebase App Hosting, never request or commit a service-account
+key. The project owner authorizes the official Firebase GitHub application and
+selects project, region, backend and branch. Use Application Default
+Credentials for Firebase Admin/Firestore and Secret Manager references for
+secrets. Verify each persistence adapter and its tests before claiming support.
