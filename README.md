@@ -28,6 +28,10 @@ batch used by professional portals. Its protected business attachment is not a
 clinical Bundle: it is a JSON:API primary document containing one or more
 Schema.org `DigitalDocument` and `MediaObject` resources. One Communication may
 carry or reference one immutable manifest covering one or several files.
+PDF, Excel, Word, image, video and other governed bytes travel separately in
+DIDComm `attachments[]`, inline under the governed limit or through protected
+`links + hash`. They are never FHIR `DocumentReference` resources.
+Implementation is tracked in [GitHub issue #1](https://github.com/antifraudservices/antifraud-personal-next/issues/1).
 
 The personal device registers separate public keys through Dynamic Client
 Registration: ML-KEM-768 for communication encryption and, when required by
@@ -67,6 +71,10 @@ Google OpenID Connect and request only an audience-bound, purpose-bound and
 expiring `age over` predicate. Google authentication proves the relying-party
 session; it neither locates a public personal record nor grants birth-date,
 identity, qualification or document access.
+
+The age-over predicate already comes from the controller-to-employee evidence
+journey. The personal or relying-party flow requests the authoritative existing
+predicate and never derives or persists a duplicate.
 
 The focused education MVP may initially use synthetic individuals and defer
 full wallet issuance and presentation. Deferred protocol boundaries must remain

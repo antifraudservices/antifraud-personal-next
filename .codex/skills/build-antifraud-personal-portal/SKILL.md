@@ -29,6 +29,11 @@ attachments. Professional-to-personal, personal-to-professional and
 professional-to-professional exchanges reuse this transport and document
 manifest contract.
 
+The exact document types are Schema.org `DigitalDocument` and `MediaObject`,
+never FHIR `DocumentReference`. File bytes travel only in DIDComm
+`attachments[]`, inline or by protected reference, through the released SDK
+contract. Follow GitHub issue `antifraud-personal-next#1`.
+
 The wallet registers distinct public device keys through Dynamic Client
 Registration: ML-KEM-768 for communication encryption and policy-required
 ML-DSA-65 for document-manifest signing. Reuse the wallet, secure-message and
@@ -46,6 +51,9 @@ The relying-party example is a separate application. It may use Google OpenID
 Connect for a synthetic login and request only an audience-bound,
 purpose-bound, expiring age predicate. Login grants no public personal-record
 search or data access.
+
+Reuse the existing controller-to-employee age-over evidence; never derive a
+second predicate in the personal or relying-party flow.
 
 Use synthetic identities and documents. Never commit internal prompts, tenant
 hosts, secrets or real personal data. Use red-green-refactor TDD.
