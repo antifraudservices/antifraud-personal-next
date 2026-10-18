@@ -21,6 +21,53 @@ Email or phone sign-in is an authentication entry point, never a public search
 key. Permission to contact an individual does not grant evidence, identity,
 qualification or other data access.
 
+## Encrypted communications and document signatures
+
+The personal inbox receives the same governed Communication collection or
+batch used by professional portals. Its protected business attachment is not a
+clinical Bundle: it is a JSON:API primary document containing one or more
+Schema.org `DigitalDocument` and `MediaObject` resources. One Communication may
+carry or reference one immutable manifest covering one or several files.
+
+The personal device registers separate public keys through Dynamic Client
+Registration: ML-KEM-768 for communication encryption and, when required by
+the document policy, ML-DSA-65 for manifest signing. Private keys remain inside
+the protected wallet and never enter the browser, gateway, message, credential
+or ledger.
+
+This security is an integration requirement, not a new portal cryptography
+implementation. Reuse the wallet, secure-message and managed-profile behavior
+already implemented in the shared core and Node.js SDKs. Pin the reviewed SDK
+versions and prove their contracts through the backend-for-frontend boundary;
+do not copy encryption, signing, canonicalization, key custody or unlock logic
+into React components or portal-local utilities.
+
+For a cloud wallet, the browser requires biometric unlock whenever the device
+supports it, with PIN or password as the governed fallback. The local ceremony
+authorizes the trusted backend for frontend to unprotect the wallet for one
+short, user-bound, device-bound and operation-bound session. The backend
+invokes the managed wallet through the high-level SDK and returns only the
+proof and receipt. It must destroy the unlocked session on lock, expiry,
+cancellation or failed binding; the React component never receives seed or
+private-key material.
+
+A signature binds the canonical manifest identifier and digest, signer,
+purpose, signing time, verification method and exact document versions. It is
+not inferred from delivery, read state, authentication or a button click.
+Multi-party signatures use a proof set when order is irrelevant or a proof
+chain when countersignature order matters.
+
+The same contract supports professional-to-personal,
+personal-to-professional and professional-to-professional delivery. Recipient
+authorization, represented organization, employee assignment, natural signer
+and delivery actor remain separate.
+
+A separate relying-party demonstration may authenticate a synthetic user with
+Google OpenID Connect and request only an audience-bound, purpose-bound and
+expiring `age over` predicate. Google authentication proves the relying-party
+session; it neither locates a public personal record nor grants birth-date,
+identity, qualification or document access.
+
 The focused education MVP may initially use synthetic individuals and defer
 full wallet issuance and presentation. Deferred protocol boundaries must remain
 visible and must never be replaced by a portal-generated credential.
@@ -43,8 +90,8 @@ operations; they never count as Test Network or production evidence.
 
 ## Status
 
-Scaffold only. No application, authentication, credential protocol,
-persistence or executable journey exists yet.
+Scaffold only. No application, authentication, Communication, wallet,
+signature, credential protocol, persistence or executable journey exists yet.
 
 ## Public-repository boundary
 
