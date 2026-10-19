@@ -86,8 +86,10 @@ visible and must never be replaced by a portal-generated credential.
 - Demo is the only executable MVP profile. It uses the normal portal, BFF,
   high-level SDK and gateway routes with the in-memory Fabric adapter and its
   six-second simulated confirmation.
-- Test Network is visible but disabled until the project owner supplies
-  Kubernetes, endpoints, credentials and configuration.
+- Test Network is visible but disabled until the separately operated Fabric
+  topology and service endpoints are deployed and configured. Kubernetes is
+  not a prerequisite for the Beta Demo or for a later single-orderer Test
+  Network; Production redundancy remains a separate gate.
 - Production is visible and disabled.
 
 The browser never selects an adapter, network, tenant, zone, Fabric channel,
@@ -116,8 +118,12 @@ Implementation is tracked in [Demo environment issue #2](https://github.com/anti
 
 ## Status
 
-Scaffold only. No application, authentication, Communication, wallet,
-signature, credential protocol, persistence or executable journey exists yet.
+The preliminary Next.js application, controlled environment selector and
+App Hosting configuration are executable. Demo visibly exposes the personal
+inbox, credential and disclosure boundaries while leaving unsupported actions
+disabled. Authentication, addressed Communication retrieval, wallet signing,
+credential issuance/presentation and personal persistence are still deferred;
+the UI does not simulate success for them.
 
 ## Public-repository boundary
 
