@@ -9,6 +9,13 @@ employee, reviewer or issuer authority.
 
 ## Intended scope
 
+- preserve the complete neutral Personal information architecture: Cards,
+  Identity, Documents, Services, Communications, contacts/permissions and
+  device mobility;
+- use Trust for governed employee-email, organization-domain and received-
+  document verification requests;
+- keep Marketplace separate for discovery of verified organizations and their
+  public Services and Products;
 - review requests addressed to the authenticated individual;
 - approve or decline the exact requested disclosure or derived predicate;
 - inspect evidence provenance and current status when policy permits;
@@ -118,12 +125,16 @@ Implementation is tracked in [Demo environment issue #2](https://github.com/anti
 
 ## Status
 
-The preliminary Next.js application, controlled environment selector and
-App Hosting configuration are executable. Demo visibly exposes the personal
-inbox, credential and disclosure boundaries while leaving unsupported actions
-disabled. Authentication, addressed Communication retrieval, wallet signing,
-credential issuance/presentation and personal persistence are still deferred;
-the UI does not simulate success for them.
+The Next.js application now exposes the complete neutral Personal navigation,
+the separate Trust and Marketplace surfaces, the Connect Health visual system
+and server-owned profiles for reviewed sectors. Trust actions stop at
+an honest draft until an authoritative provider adapter exists. Authentication,
+addressed Communication retrieval, wallet signing, credential issuance/
+presentation and personal persistence remain deferred and are not simulated.
+
+White-label branding and sector vocabulary come only from
+`ANTIFRAUD_PERSONAL_PROFILE_JSON` on the trusted server. The browser cannot
+select a sector or authority profile.
 
 ## Public-repository boundary
 

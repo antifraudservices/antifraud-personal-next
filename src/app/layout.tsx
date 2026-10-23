@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
+import { Inter } from 'next/font/google'
 import 'antifraud-portal-components-react/styles.css'
+import 'uhc-portal-components-react/styles.css'
 import './globals.css'
-export const metadata: Metadata = {title: 'Antifraud Personal', description: 'Subject-controlled requests and disclosures.'}
-export default function RootLayout({children}: Readonly<{children: ReactNode}>) { return <html lang="en"><body>{children}</body></html> }
+export const metadata: Metadata = {title: 'antifraud.online Personal', description: 'Subject-controlled records, Marketplace discovery and Trust requests.'}
+const inter = Inter({subsets: ['latin'], display: 'swap', variable: '--font-inter'})
+export default function RootLayout({children}: Readonly<{children: ReactNode}>) { return <html lang="en" suppressHydrationWarning className={inter.variable}><body>{children}</body></html> }
